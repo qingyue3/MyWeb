@@ -13,7 +13,6 @@ import {
   Music2,
   Link
 } from 'lucide-react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 interface Project {
   id: number;
