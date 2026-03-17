@@ -37,7 +37,7 @@ const PROJECTS: Project[] = [
     title: "3D虚拟遗址交互",
     description: "数字重建的真实遗址场景，用户可以在虚拟环境中交互查看遗址的详细信息，包括历史事件、人物介绍、环境变化等。",
     tags: ["Ureal5", "A/B Test", "Human Computer Interaction", "Virtual Reality","3D Modeling"],
-    image: "/images/Heritage.png",
+    image: "/images/Heritage.webp",
     link: "#"
   },
   {
@@ -45,7 +45,7 @@ const PROJECTS: Project[] = [
     title: "黑白棋游戏设计",
     description: "实现黑白棋游戏的基本规则，包括棋盘布局、棋子移动、游戏结束判断等功能。",
     tags: ["Unity 3D", "C#", "MiniMax Algorithm", "Game Design","Animation Design"],
-    image: "/images/Othello.png",
+    image: "/images/Othello.webp",
     link: "#"
   },
   {
@@ -53,7 +53,7 @@ const PROJECTS: Project[] = [
     title: "机器学习驱动等离子化学反应过程的优化",
     description: "通过分析等离子体催化甲烷燃烧反应实验数据，利用多种机器学习方法（如支持向量机、神经网络等）建立模型，优化反应过程。",
     tags: ["Python", "SVM","Random Forest", "Data Analysis", "Machine Learning"],
-    image: "/images/Analysis.png",
+    image: "/images/Analysis.webp",
     link: "#"
   }
 ];
@@ -158,9 +158,9 @@ const About = () => (
     <div className="relative">
       <div className="aspect-[3/4] rounded-3xl overflow-hidden">
         <img 
-          src="/images/Me.JPG" 
+          src="/images/Me.webp" 
           alt="Profile" 
-          className="w-full h-full object-cover grayscale-[65%] hover:grayscale-0 transition-all duration-700"
+          className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -182,7 +182,7 @@ const About = () => (
       <div className="space-y-6">
         <div className="glass-card flex items-start gap-4">
           <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-white">
-            <img src="/images/XJTLU.png" alt="西交利物浦大学" className="w-full h-full object-contain" />
+            <img src="/images/XJTLU.webp" alt="西交利物浦大学" className="w-full h-full object-contain" />
           </div>
           <div>
             <h3 className="text-xl mb-1">西交利物浦大学 <span className="text-white/40 text-base ml-2">2020.09 - 2022.07</span></h3>
@@ -191,7 +191,7 @@ const About = () => (
         </div>
         <div className="glass-card flex items-start gap-4">
           <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-white">
-            <img src="/images/UoL.png" alt="利物浦大学" className="w-full h-full object-contain" />
+            <img src="/images/UoL.webp" alt="利物浦大学" className="w-full h-full object-contain" />
           </div>
           <div>
             <h3 className="text-xl mb-1">利物浦大学 <span className="text-white/40 text-base ml-2">2022.09 - 2024.07</span></h3>
@@ -200,7 +200,7 @@ const About = () => (
         </div>
         <div className="glass-card flex items-start gap-4">
           <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 bg-white">
-            <img src="/images/UoB.png" alt="布里斯托大学" className="w-full h-full object-contain" />
+            <img src="/images/UoB.webp" alt="布里斯托大学" className="w-full h-full object-contain" />
           </div>
           <div>
             <h3 className="text-xl mb-1">布里斯托大学 <span className="text-white/40 text-base ml-2">2024.09 - 2026.02</span></h3>
@@ -236,20 +236,20 @@ const Tags = () => (
         <div className="relative overflow-hidden">
           <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
             {[
-              { name: '英国', image: '/images/UK.JPG' },
-              { name: '西班牙', image: '/images/SPA.JPG' },
-              { name: '葡萄牙', image: '/images/POR.JPG' },
-              { name: '瑞典', image: '/images/SWE.JPG' },
-              { name: '挪威', image: '/images/NOR.JPG' },
-              { name: '埃及', image: '/images/EGY.JPG' },
-              { name: '法国', image: '/images/FRA.JPG' },
-              { name: '匈牙利', image: '/images/HUN.JPG' },
-              { name: '奥地利', image: '/images/AUT.JPG' },
-              { name: '捷克', image: '/images/CZE.JPG' },
-              { name: '冰岛', image: '/images/ICE.JPG' },
-              { name: '荷兰', image: '/images/NET.JPG' },
-              { name: '意大利', image: '/images/ITA.JPG' },
-              { name: '瑞士', image: '/images/SWI.JPG' },
+              { name: '英国', image: '/images/UK.webp' },
+              { name: '西班牙', image: '/images/SPA.webp' },
+              { name: '葡萄牙', image: '/images/POR.webp' },
+              { name: '瑞典', image: '/images/SWE.webp' },
+              { name: '挪威', image: '/images/NOR.webp' },
+              { name: '埃及', image: '/images/EGY.webp' },
+              { name: '法国', image: '/images/FRA.webp' },
+              { name: '匈牙利', image: '/images/HUN.webp' },
+              { name: '奥地利', image: '/images/AUT.webp' },
+              { name: '捷克', image: '/images/CZE.webp' },
+              { name: '冰岛', image: '/images/ICE.webp' },
+              { name: '荷兰', image: '/images/NET.webp' },
+              { name: '意大利', image: '/images/ITA.webp' },
+              { name: '瑞士', image: '/images/SWI.webp' },
             ].map((country, i) => (
               <motion.div
                 key={i}
@@ -267,6 +267,7 @@ const Tags = () => (
                       alt={country.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
@@ -375,6 +376,7 @@ const Projects = () => (
               alt={project.title} 
               className="w-full h-full object-cover object-bottom group-hover:scale-110 transition-transform duration-500"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
           </div>
           <div className="p-6 relative">
