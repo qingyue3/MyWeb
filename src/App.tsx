@@ -160,7 +160,7 @@ const About = () => (
         <img 
           src="/images/Me.webp" 
           alt="Profile" 
-          className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
+          className="w-full h-full object-cover md:grayscale-[30%] md:hover:grayscale-0 transition-all duration-700"
           referrerPolicy="no-referrer"
         />
       </div>
@@ -267,7 +267,6 @@ const Tags = () => (
                       alt={country.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
-                      loading="lazy"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
