@@ -34,11 +34,11 @@ interface Work {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "3D虚拟遗址交互",
+    title: "3D 虚拟遗址交互",
     description: "数字重建的真实遗址场景，用户可以在虚拟环境中交互查看遗址的详细信息，包括历史事件、人物介绍、环境变化等。",
     tags: ["Ureal5", "A/B Test", "Human Computer Interaction", "Virtual Reality","3D Modeling"],
     image: "/images/Heritage.webp",
-    link: "#"
+    link: "https://github.com/qingyue3/VR_Heritage"
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const PROJECTS: Project[] = [
     description: "实现黑白棋游戏的基本规则，包括棋盘布局、棋子移动、游戏结束判断等功能。",
     tags: ["Unity 3D", "C#", "MiniMax Algorithm", "Game Design","Animation Design"],
     image: "/images/Othello.webp",
-    link: "#"
+    link: "https://github.com/qingyue3/Othello"
   },
   {
     id: 3,
@@ -287,13 +287,28 @@ const Tags = () => (
             正在学习
           </h3>
           <div className="glass-card p-6 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.15)' }}>
-            <div className="flex flex-wrap gap-3">
-              {['韩语', 'AI大模型', 'Vibe Coding'].map((item, i) => (
-                <span key={i} className="px-4 py-2 text-base font-medium rounded-lg" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  {item}
-                </span>
+            <ul className="space-y-3">
+              {[
+                { name: 'Python', learned: true },
+                { name: 'Unreal', learned: true },
+                { name: 'Unity', learned: true },
+                { name: 'C++', learned: true },
+                { name: '韩语', learned: false },
+                { name: 'AI 大模型', learned: false },
+                { name: 'Vibe Coding', learned: false }
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <span className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${item.learned ? 'bg-brand-green border-brand-green' : 'border-white/30'}`}>
+                    {item.learned && (
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </span>
+                  <span className={`text-base ${item.learned ? 'line-through text-white/40' : ''}`}>{item.name}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
         
@@ -303,13 +318,14 @@ const Tags = () => (
             感兴趣的事
           </h3>
           <div className="glass-card p-6 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.15)' }}>
-            <div className="flex flex-wrap gap-3">
-              {['旅游', '想做一个自媒体博主', '想做一款播客', '想看一次庭审', '想设计一个互联网产品', '想学会一门乐器', "Kpop"].map((item, i) => (
-                <span key={i} className="px-4 py-2 text-base font-medium rounded-lg" style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  {item}
-                </span>
+            <ul className="space-y-3">
+              {['旅游', 'Kpop', '想做一个自媒体博主', '想做一款播客', '想看一次庭审', '想设计一个互联网产品', '想学会一门乐器'].map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-brand-pink flex-shrink-0"></span>
+                  <span className="text-base">{item}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
@@ -321,7 +337,7 @@ const Works = () => (
   <section className="section-padding">
     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
       <div>
-        <span className="text-brand-green font-serif font-bold text-sm tracking-widest uppercase mb-4 block">
+        <span className="text-brand-pink font-serif font-bold text-sm tracking-widest uppercase mb-4 block">
           • Experience
         </span>
         <h2 className="text-4xl md:text-6xl">工作经历</h2>
@@ -353,7 +369,7 @@ const Projects = () => (
   <section className="section-padding bg-zinc-950/50">
     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
       <div>
-        <span className="text-brand-pink font-serif font-bold text-sm tracking-widest uppercase mb-4 block">
+        <span className="text-brand-green font-serif font-bold text-sm tracking-widest uppercase mb-4 block">
           • Portfolio
         </span>
         <h2 className="text-4xl md:text-6xl">精选项目</h2>
