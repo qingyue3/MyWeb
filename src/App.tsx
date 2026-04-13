@@ -151,8 +151,45 @@ const Hero = () => {
 
   const sectionRef = useRef<HTMLElement>(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      const beta = event.beta || 0;
+      const gamma = event.gamma || 0;
+      const rotateX = Math.min(Math.max(beta * 0.5, -20), 20);
+      const rotateY = Math.min(Math.max(gamma * 0.5, -20), 20);
+      setRotate({ x: rotateX, y: rotateY });
+    };
+
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+      (DeviceOrientationEvent as any).requestPermission()
+        .then((response: string) => {
+          if (response === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+          }
+        })
+        .catch(console.error);
+    } else {
+      window.addEventListener('deviceorientation', handleOrientation);
+    }
+
+    return () => {
+      window.removeEventListener('deviceorientation', handleOrientation);
+    };
+  }, [isMobile]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (isMobile) return;
     if (!sectionRef.current) return;
     const rect = sectionRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -166,6 +203,7 @@ const Hero = () => {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     setRotate({ x: 0, y: 0 });
   };
 
