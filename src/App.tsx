@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { 
   Github, 
@@ -149,8 +149,33 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 1.2]);
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+    //旋转的角度
+    const rotateX = -(mouseY / (rect.height / 2)) * 20;
+    const rotateY = -(mouseX / (rect.width / 2)) * 20;
+    setRotate({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+  };
+
   return (
-  <section className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+  <section 
+    ref={sectionRef}
+    onMouseMove={handleMouseMove}
+    onMouseLeave={handleMouseLeave}
+    className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden"
+  >
     <motion.div 
       style={{ opacity, scale }}
       className="absolute inset-0 z-0"
@@ -166,9 +191,11 @@ const Hero = () => {
     
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 0.8, y: 0 }}
-      transition={{ duration: 1.2 }}
+      animate={{ opacity: 0.8, y: 0, rotateX: rotate.x, rotateY: rotate.y }}
+      // 旋转的过渡时间设置
+      transition={{ duration: 0.2, ease: "easeOut" }}
       className="relative z-10 max-w-5xl px-6"
+      style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
     >
       <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif leading-tight mb-4">
         自在生长 永远热烈 
