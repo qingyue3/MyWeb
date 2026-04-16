@@ -88,14 +88,43 @@ const Navbar = ({ activeTab, onTabClick, isDark, onToggleDark }: { activeTab: st
   ];
 
   return (
-    <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4">
-      <div className="glass-nav flex items-center gap-3 md:gap-8">
-        <div className="flex items-center gap-1 md:gap-4">
+    <>
+      <button
+        onClick={onToggleDark}
+        className="fixed top-8 right-8 z-50 p-2 rounded-full glass-nav hover:bg-white/10 transition-colors hidden landscape:flex"
+        aria-label="Toggle theme"
+      >
+        <AnimatePresence mode="wait">
+          {isDark ? (
+            <motion.div
+              key="moon"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Moon className="w-4 h-4" />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="sun"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Sun className="w-4 h-4" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </button>
+      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-2 md:px-4">
+        <div className="glass-nav flex items-center gap-1 md:gap-4">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => onTabClick(tab.id)}
-              className={`text-xs md:text-sm font-medium transition-colors relative py-1 px-2 whitespace-nowrap ${
+              className={`text-xs md:text-sm font-medium transition-colors relative py-1 px-1 md:px-2 whitespace-nowrap ${
                 activeTab === tab.id ? '' : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -109,38 +138,38 @@ const Navbar = ({ activeTab, onTabClick, isDark, onToggleDark }: { activeTab: st
               )}
             </button>
           ))}
+          <button
+            onClick={onToggleDark}
+            className="p-1.5 md:p-2 rounded-full hover:bg-white/10 transition-colors landscape:hidden"
+            aria-label="Toggle theme"
+          >
+            <AnimatePresence mode="wait">
+              {isDark ? (
+                <motion.div
+                  key="moon"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Moon className="w-3 h-3 md:w-4 md:h-4" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="sun"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Sun className="w-3 h-3 md:w-4 md:h-4" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
         </div>
-        <button
-          onClick={onToggleDark}
-          className="p-2 rounded-full hover:bg-white/10 transition-colors"
-          aria-label="Toggle theme"
-        >
-          <AnimatePresence mode="wait">
-            {isDark ? (
-              <motion.div
-                key="moon"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Moon className="w-4 h-4" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="sun"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Sun className="w-4 h-4" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </button>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
